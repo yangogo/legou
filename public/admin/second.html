@@ -103,30 +103,71 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h4 class="modal-title">温馨提示</h4>
+          <h4 class="modal-title">添加分类</h4>
         </div>
         <div class="modal-body">
-          <p class="text-danger">
-            <span class="glyphicon glyphicon-info-sign"></span>
-            <span>您确定要退出后台管理系统吗？</span>
-          </p>
+          <form id="form">
+            <!-- 一级下拉菜单框 -->
+            <div class="form-group">
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle btn-text" data-toggle="dropdown">
+                  请选择一级分类
+                  <span class="caret"></span>
+                </button>
+               
+
+                <ul class="dropdown-menu">
+                  <!-- 挖个坑 -->
+                </ul>
+              </div>
+              <input name="categoryId" type="hidden">
+              
+            </div>
+
+            <!-- input 二级分类框 -->
+            <div class="form-group">
+              <input type="text" class="form-control" name="brandName" placeholder="请输入二级分类">
+            </div>
+            <!-- 图片上传框 -->
+            <div class="form-group">
+              <label for="fileupload"  class="btn btn-default">上传图片</label>
+              <input id="fileupload" type="file" name="pic1" data-url="/category/addSecondCategoryPic"  multiple style="display: none;">
+              <input type="hidden" name="brandLogo" class="brandLogo">
+              <img class="img-text" width="100px;" src="./images/none.png" alt="">
+            </div>
+            <input type="text" name="hot" style="display: none" value="1">
+            <!-- 取消 添加按钮 -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="submit" class="btn btn-primary btn_add">添加</button>
+            </div>
+          </form>
+
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-          <button type="button" class="btn btn-primary btn_logout">退出</button>
-        </div>
+
       </div>
     </div>
   </div>
-
+ 
+<!-- 二级导航模块 -->
   <script type="text/html" id="tmp">
     {{each rows v i}}
     <tr>
       <td>{{(page-1)*size+i+1}}</td>
       <td>{{v.categoryName}}</td>
       <td>{{v.brandName}}</td>
-      <td><img src="{{v.brandLogo}}" alt=""></td>
+      <td>
+        <img src="{{v.brandLogo}}" alt="">
+      </td>
     </tr>
+    {{/each}}
+  </script>
+  <!-- 一级导航下拉菜单模块 -->
+  <script type="text/html" id="tmp1">
+    {{each rows v i}}
+    <li>
+      <a data-id="{{v.id}}" href="#">{{v.categoryName}}</a>
+    </li>
     {{/each}}
   </script>
 
@@ -137,6 +178,8 @@
   <script src="lib/bootstrap-validator/js/bootstrapValidator.js"></script>
   <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
   <script src="./lib/artTemplate/template-web.js"></script>
+  <script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+  <script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
   <script src="lib/nprogress/nprogress.js"></script>
   <script src="js/common.js"></script>
   <script src="js/second.js"></script>

@@ -3,12 +3,42 @@
          float: left;
         width: 90px;
         height: 100%;
-        border: 1px solid #000; 
+
+        position: relative;
+        li{
+            
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 16px;
+            background-color: pink;
+            border-right: 1px solid red;
+            border-bottom: 1px solid red;
+            a{
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+            &.active{
+                border-right:none;
+                background: #fff;
+            }
+        }
      }
      .cf_right{
 
          height: 100%;
-         background: yellowgreen;
+
           overflow: hidden;
+          position: relative;
+          li{
+              float: left;
+              width: 33.33%;
+              text-align: center;
+              img{
+                  width: 50%;
+                  margin: 0 auto;
+              }
+          }
      }
  }
